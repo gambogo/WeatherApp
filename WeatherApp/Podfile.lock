@@ -1,0 +1,44 @@
+PODS:
+  - Alamofire (5.4.4)
+  - Device (3.1.2)
+  - IQKeyboardManagerSwift (6.1.1)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
+  - RSFontSizes (1.0.2):
+    - Device (~> 3.1.2)
+  - Swifter (1.4.7)
+  - SwiftLint (0.43.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.4)
+  - IQKeyboardManagerSwift (~> 6.1.1)
+  - R.swift (~> 5.0.3)
+  - RSFontSizes (~> 1.0.2)
+  - Swifter (~> 1.4.7)
+  - SwiftLint (~> 0.43.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Device
+    - IQKeyboardManagerSwift
+    - R.swift
+    - R.swift.Library
+    - RSFontSizes
+    - Swifter
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Device: 62242076214c30fb5760174b3601cefafa70a481
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+  RSFontSizes: cf14ae41c2807b66573f7064528ccff8c98251c9
+  Swifter: 2327ef5d872c638aebab79646ce494af508b0c8f
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+
+PODFILE CHECKSUM: 391204e3132a51af1b8220a721438774880670bc
+
+COCOAPODS: 1.11.2
