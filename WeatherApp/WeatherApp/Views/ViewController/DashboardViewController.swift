@@ -15,6 +15,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var locationSearchBar: UISearchBar!
     @IBOutlet weak var weatherTableView: UITableView!
+    @IBOutlet weak var cityLabel: UILabel!
+    
     var listWeather: [WeatherDetail] = []
     var dismissKeyboardGesture: UITapGestureRecognizer!
     
@@ -74,8 +76,13 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     
     func searchComplete(result: Weather?) {
         if let strongResult = result {
+            if let strongCity = strongResult.city {
+                self.cityLabel.text = strongCity.name
+            }
             self.listWeather = strongResult.list ?? []
         }
+        
+        
         
         self.weatherTableView.reloadData()
     }
@@ -106,7 +113,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         //Data binding
         let currentWeatherDetail = listWeather[indexPath.row]
         
-        cell.dateLabel.text = WeatherUtils.dateStringFromTimeStamp(timeStamp: Double(currentWeatherDetail.dt ?? 0))
+        cell.dateLabel.text = "Date: " + WeatherUtils.dateStringFromTimeStamp(timeStamp: Double(currentWeatherDetail.dt ?? 0))
         
         if let strongTemp = currentWeatherDetail.temp {
             
