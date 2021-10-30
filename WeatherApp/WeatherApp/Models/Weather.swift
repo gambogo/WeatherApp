@@ -1,14 +1,14 @@
 import Foundation
 
 // MARK: - Weather
-class Weather {
+class Weather: Codable {
     var city: City?
     var cod: String?
     var message: Double?
     var cnt: Int?
-    var list: [List]?
+    var list: [WeatherDetail]?
 
-    init(city: City?, cod: String?, message: Double?, cnt: Int?, list: [List]?) {
+    init(city: City?, cod: String?, message: Double?, cnt: Int?, list: [WeatherDetail]?) {
         self.city = city
         self.cod = cod
         self.message = message
@@ -18,7 +18,7 @@ class Weather {
 }
 
 // MARK: - List
-class List {
+class WeatherDetail: Codable {
     var dt, sunrise, sunset: Int?
     var temp: Temp?
     var feelsLike: FeelsLike?
@@ -49,7 +49,7 @@ class List {
 }
 
 // MARK: - FeelsLike
-class FeelsLike {
+class FeelsLike: Codable {
     var day, night, eve, morn: Double?
 
     init(day: Double?, night: Double?, eve: Double?, morn: Double?) {
@@ -62,14 +62,14 @@ class FeelsLike {
 
 
 // MARK: - WeatherElement
-class WeatherElement {
+class WeatherElement: Codable {
     var id: Int?
-    var main, weatherDescription, icon: String?
+    var main, description, icon: String?
 
     init(id: Int?, main: String?, weatherDescription: String?, icon: String?) {
         self.id = id
         self.main = main
-        self.weatherDescription = weatherDescription
+        self.description = weatherDescription
         self.icon = icon
     }
 }

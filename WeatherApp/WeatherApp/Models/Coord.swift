@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Coord {
+class Coord: Codable {
     var lon, lat: Double?
 
     init(lon: Double?, lat: Double?) {

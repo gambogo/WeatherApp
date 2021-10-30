@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Temp {
+class Temp: Codable {
     var day, min, max, night: Double?
     var eve, morn: Double?
 

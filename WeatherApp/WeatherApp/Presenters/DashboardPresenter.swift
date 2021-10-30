@@ -23,13 +23,11 @@ class DashboardPresenter {
         self.dashboardViewDelegate = viewDelegate
     }
     
-    func searchWeather(colorName:(String)){
-
-        weatherService.searchWeather(country: "saigon") { [weak self] result in
+    func searchWeather(cityName: (String)) {
+        weatherService.searchWeather(country: cityName) { [weak self] result in
             if let strongSelf = self, let strongDelegate = strongSelf.dashboardViewDelegate {
                 strongDelegate.searchComplete(result: result)
             }
         }
-        
     }
 }

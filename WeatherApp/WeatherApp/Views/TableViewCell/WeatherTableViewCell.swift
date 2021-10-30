@@ -14,6 +14,7 @@ class WeatherTableViewCell: UITableViewCell {
     public static let identifier = "WeatherCell"
     
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tempuratureLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
