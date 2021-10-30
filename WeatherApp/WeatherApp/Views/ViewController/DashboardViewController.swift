@@ -39,15 +39,17 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         self.weatherTableView.register(UINib(nibName: WeatherTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: WeatherTableViewCell.identifier)
         
         //Trigger search location without press search
-        locationSearchBar
-            .rx.text
-            .debounce(RxTimeInterval.seconds(1) , scheduler: MainScheduler.instance) //Wait for 1 sencond after user input
-            .subscribe(onNext: { [unowned self] query in
-                if let strongQuery = query, strongQuery.count > 0 {
-                    dashBoardPresenter.searchWeather(cityName: strongQuery)
-                }
-            })
-            .disposed(by: disposeBag)
+//        locationSearchBar
+//            .rx.text
+//            .debounce(RxTimeInterval.seconds(1) , scheduler: MainScheduler.instance) //Wait for 1 sencond after user input
+//            .subscribe(onNext: { [unowned self] query in
+//                if let strongQuery = query, strongQuery.count > 0 {
+//                    if validSearch(search: strongQuery) {
+//                        dashBoardPresenter.searchWeather(cityName: strongQuery)
+//                    }
+//                }
+//            })
+//            .disposed(by: disposeBag)
         
     }
     
@@ -64,10 +66,25 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         view.endEditing(true)
     }
     
+    func validSearch(search: String) -> Bool {
+        if search.count < 3 {
+            let alert = UIAlertController(title: "", message: "The Search Location must be at least 3 characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        
+        return true
+        
+    }
+    
     //MARK: - Searchbar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let strongSearchText  = locationSearchBar.text, strongSearchText.count > 0 {
-            dashBoardPresenter.searchWeather(cityName: strongSearchText)
+            
+            if validSearch(search: strongSearchText) {
+                dashBoardPresenter.searchWeather(cityName: strongSearchText)
+            }
         }
         searchBar.resignFirstResponder()
     }
@@ -81,8 +98,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }
             self.listWeather = strongResult.list ?? []
         }
-        
-        
         
         self.weatherTableView.reloadData()
     }
