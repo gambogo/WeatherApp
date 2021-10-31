@@ -20,7 +20,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     var listWeather: [WeatherDetail] = []
     var dismissKeyboardGesture: UITapGestureRecognizer!
     
-    private let dashBoardPresenter = DashboardPresenter(service: WeatherService())
+    var dashBoardPresenter = DashboardPresenter(service: WeatherService())
     
     let disposeBag = DisposeBag()
         
@@ -35,6 +35,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         locationSearchBar.layer.borderWidth = 0
         locationSearchBar.layer.borderColor = UIColor.clear.cgColor
         dashBoardPresenter.setViewDelegate(viewDelegate: self)
+        dashBoardPresenter.onViewLoaded()
         
         self.weatherTableView.register(UINib(nibName: WeatherTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: WeatherTableViewCell.identifier)
         
@@ -54,16 +55,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        dashBoardPresenter.onViewAppeared()
         view.addGestureRecognizer(self.dismissKeyboardGesture)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        dashBoardPresenter.onViewDisappeared()
         view.removeGestureRecognizer(self.dismissKeyboardGesture)
     }
     
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+//        view.endEditing(true)
+        self.locationSearchBar.resignFirstResponder()
     }
     
     func validSearch(search: String) -> Bool {
@@ -86,7 +90,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 dashBoardPresenter.searchWeather(cityName: strongSearchText)
             }
         }
-        searchBar.resignFirstResponder()
+        dismissKeyboard()
     }
     
     //MARK: - Presenter Delegates

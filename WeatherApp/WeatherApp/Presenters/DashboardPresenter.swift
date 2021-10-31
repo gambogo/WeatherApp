@@ -12,11 +12,24 @@ protocol DashboardViewDelegate: NSObjectProtocol {
 }
 
 class DashboardPresenter {
+    
     private let weatherService: WeatherService
     weak private var dashboardViewDelegate : DashboardViewDelegate?
     
     init(service: WeatherService){
         self.weatherService = service
+    }
+    
+    func onViewLoaded() {
+        //Implement view load here
+    }
+    
+    func onViewAppeared() {
+        //Implement view load here
+    }
+    
+    func onViewDisappeared() {
+        //Implement view load here
     }
     
     func setViewDelegate(viewDelegate: DashboardViewDelegate?){
