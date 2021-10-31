@@ -10,6 +10,11 @@ import Alamofire
 
 class WeatherService {
     
+    private let allowedDiskSize = 100 * 1024 * 1024 //Bytes
+    private lazy var cache: URLCache = {
+        return URLCache(memoryCapacity: 0, diskCapacity: allowedDiskSize, diskPath: "WeatherServiceCache")
+    }()
+    
     var requestTimes: [String: TimeInterval] = [:]
     
     private let manager: Session
@@ -28,47 +33,54 @@ class WeatherService {
         var requesUrl = URLRequest(url: URL(string: urlReqestString)!)
         requesUrl.httpMethod = "GET"
         requesUrl.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //requesUrl.setValue("Cache-Control", forHTTPHeaderField: "max-age=180") //cache for 3 minutes
-        
         requesUrl.cachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad //force load response cached
+        
         
         //If more than 3 minutes
         let timeStamp = NSDate().timeIntervalSince1970
         if let requestTime = requestTimes[urlReqestString] {
             if (timeStamp - requestTime > 180) { //180 seconds
                 
-                //Or clear all cache if you want
-                //URLCache.shared.removeAllCachedResponses()
-                
-                //Remove cache
-                URLCache.shared.removeCachedResponse(for: requesUrl)
+                //Remove cache - The request will be effect next time api call
+                self.cache.removeCachedResponse(for: requesUrl)
             }
         } else {
             requestTimes[urlReqestString] = timeStamp
         }
         
-        
-        let request = manager.request(requesUrl)
-        
-        request.responseJSON { (response) in
-            do {
-                
-                if response != nil && response.data != nil {
-                    let data = try? JSONDecoder().decode(Weather.self, from: response.data!)
+        if let cachedData = self.cache.cachedResponse(for: requesUrl) {
+            let data = try? JSONDecoder().decode(Weather.self, from: cachedData.data)
+            callBack(data)
+        } else {
+            let request = manager.request(requesUrl)
+            
+            request.responseJSON { (response) in
+                do {
                     
-                    callBack(data)
-                } else {
+                    if response != nil && response.data != nil {
+                        
+                        if let urlResponse = response.response {
+                            let cachedData = CachedURLResponse(response: urlResponse, data: response.data!)
+                           self.cache.storeCachedResponse(cachedData, for: requesUrl)
+                        }
+                        let data = try? JSONDecoder().decode(Weather.self, from: response.data!)
+                        
+                        callBack(data)
+                    } else {
+                        callBack(nil)
+                    }
+                    
+                }
+                catch {
                     callBack(nil)
                 }
                 
+                
+                
             }
-            catch {
-                callBack(nil)
-            }
-            
-            
-            
         }
+        
+        
         
     }
 }
