@@ -48,10 +48,7 @@ class DashboardTests: XCTestCase, WeatherApp.DashboardViewDelegate {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         dashboardPresenter?.setViewDelegate(viewDelegate: nil)
     }
-    
-    func testSearchComplete(result: Weather?) throws{
-        XCTAssertTrue(result != nil)
-    }
+
     
     
     func testViewDidload() throws {
@@ -77,10 +74,13 @@ class DashboardTests: XCTestCase, WeatherApp.DashboardViewDelegate {
             //self.dashboardViewController?.searchComplete(result: result)
             self.weatherFound = result
             self.searchExpectation!.fulfill()
+            
         })
         
         wait(for: [searchExpectation!], timeout: 2)
         XCTAssertTrue(self.weatherFound != nil)
+        
+        dashboardViewController?.searchComplete(result: self.weatherFound)
         
         //Test Render items
         dashboardViewController?.listWeather = self.weatherFound?.list ?? []

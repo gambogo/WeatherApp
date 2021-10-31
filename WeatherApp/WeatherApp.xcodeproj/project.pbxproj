@@ -23,8 +23,10 @@
 		D946F048272EA5650026EB55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D990710C272C670300BEAC74 /* LaunchScreen.storyboard */; };
 		D946F04C272EA6FE0026EB55 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA892D272D4D6400A9536C /* WeatherTableViewCell.swift */; };
 		D946F04D272EA7010026EB55 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FA8937272D5AC100A9536C /* WeatherTableViewCell.xib */; };
+		D98D6746272EB32800FBECC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D6745272EB32800FBECC9 /* SceneDelegate.swift */; };
+		D98D674A272EB38600FBECC9 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D6749272EB38600FBECC9 /* AppDelegateTests.swift */; };
+		D98D674C272EB3CD00FBECC9 /* AppDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98D674B272EB3CD00FBECC9 /* AppDelegateMock.swift */; };
 		D9907102272C670200BEAC74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9907101272C670200BEAC74 /* AppDelegate.swift */; };
-		D9907104272C670200BEAC74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9907103272C670200BEAC74 /* SceneDelegate.swift */; };
 		D9907109272C670200BEAC74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9907107272C670200BEAC74 /* Main.storyboard */; };
 		D990710B272C670300BEAC74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D990710A272C670300BEAC74 /* Assets.xcassets */; };
 		D990710E272C670300BEAC74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D990710C272C670300BEAC74 /* LaunchScreen.storyboard */; };
@@ -80,9 +82,11 @@
 		B883E9513EDEFB01F3A21AD6 /* Pods-WeatherAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppUITests.release.xcconfig"; path = "Target Support Files/Pods-WeatherAppUITests/Pods-WeatherAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C7BFBC6060BC3F4D9D43D369 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68D27ECD418C5E33B819D33 /* Pods-WeatherApp-WeatherAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp-WeatherAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp-WeatherAppUITests/Pods-WeatherApp-WeatherAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D98D6745272EB32800FBECC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D98D6749272EB38600FBECC9 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
+		D98D674B272EB3CD00FBECC9 /* AppDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateMock.swift; sourceTree = "<group>"; };
 		D99070FE272C670200BEAC74 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9907101272C670200BEAC74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9907103272C670200BEAC74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D9907108272C670200BEAC74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D990710A272C670300BEAC74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D990710D272C670300BEAC74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -184,8 +188,8 @@
 				D9907131272D37FA00BEAC74 /* Models */,
 				D9907133272D37FA00BEAC74 /* Presenters */,
 				D9907132272D37FA00BEAC74 /* Views */,
-				D9907103272C670200BEAC74 /* SceneDelegate.swift */,
 				D9907101272C670200BEAC74 /* AppDelegate.swift */,
+				D98D6745272EB32800FBECC9 /* SceneDelegate.swift */,
 				D990710A272C670300BEAC74 /* Assets.xcassets */,
 				D990710F272C670300BEAC74 /* Info.plist */,
 			);
@@ -300,6 +304,7 @@
 				D9FA895A272E7C9B00A9536C /* MockingURLProtocol.swift */,
 				D9FA8958272E751E00A9536C /* MockURLProtocol.swift */,
 				D9FA8964272E8BCB00A9536C /* DashboardPresenterMock.swift */,
+				D98D674B272EB3CD00FBECC9 /* AppDelegateMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				D9FA8946272E58EC00A9536C /* DashboardTests.swift */,
+				D98D6749272EB38600FBECC9 /* AppDelegateTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -597,9 +603,9 @@
 				D9FA8944272D73B900A9536C /* APIConstant.swift in Sources */,
 				D9907140272D454400BEAC74 /* CustomAppView.swift in Sources */,
 				D990713A272D3C3800BEAC74 /* DashboardViewController.swift in Sources */,
+				D98D6746272EB32800FBECC9 /* SceneDelegate.swift in Sources */,
 				D9907138272D3C1C00BEAC74 /* DashboardPresenter.swift in Sources */,
 				D9907102272C670200BEAC74 /* AppDelegate.swift in Sources */,
-				D9907104272C670200BEAC74 /* SceneDelegate.swift in Sources */,
 				D990713C272D3CB900BEAC74 /* Weather.swift in Sources */,
 				D9FA8934272D519700A9536C /* Temp.swift in Sources */,
 			);
@@ -619,6 +625,7 @@
 				D946F041272EA54E0026EB55 /* Weather.swift in Sources */,
 				D9FA8961272E7D5600A9536C /* XCTest+Mocker.swift in Sources */,
 				D9FA8959272E751E00A9536C /* MockURLProtocol.swift in Sources */,
+				D98D674C272EB3CD00FBECC9 /* AppDelegateMock.swift in Sources */,
 				D946F043272EA5530026EB55 /* Coord.swift in Sources */,
 				D9FA895B272E7C9B00A9536C /* MockingURLProtocol.swift in Sources */,
 				D9FA895D272E7D0E00A9536C /* Mocker.swift in Sources */,
@@ -627,6 +634,7 @@
 				D946F042272EA5510026EB55 /* City.swift in Sources */,
 				D9FA8960272E7D5600A9536C /* Mock.swift in Sources */,
 				D946F046272EA55A0026EB55 /* DashboardViewController.swift in Sources */,
+				D98D674A272EB38600FBECC9 /* AppDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

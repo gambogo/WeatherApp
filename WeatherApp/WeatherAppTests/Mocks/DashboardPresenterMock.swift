@@ -16,14 +16,17 @@ class DashboardPresenterMock: WeatherApp.DashboardPresenter {
     
     override func onViewLoaded() {
         onViewLoadedCalled = true
+        super.onViewLoaded()
     }
     
     override func onViewAppeared() {
         isAppeared = true
+        super.onViewAppeared()
     }
     
     override func onViewDisappeared() {
         isAppeared = false
+        super.onViewDisappeared()
     }
     
 }
