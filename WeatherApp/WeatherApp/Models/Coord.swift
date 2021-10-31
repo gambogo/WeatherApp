@@ -10,8 +10,8 @@ import Foundation
 class Coord: Codable {
     var lon, lat: Double?
 
-    init(lon: Double?, lat: Double?) {
-        self.lon = lon
-        self.lat = lat
-    }
+//    init(lon: Double?, lat: Double?) {
+//        self.lon = lon
+//        self.lat = lat
+//    }
 }

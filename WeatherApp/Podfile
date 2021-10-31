@@ -10,9 +10,18 @@ target 'WeatherApp' do
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'SDWebImage', '~> 5.0'
+end
 
-  target 'WeatherAppUITests' do
-    inherit! :complete
-    pod 'Swifter', '~> 1.4.7'
-  end
+target 'WeatherAppUITests' do
+  inherit! :complete
+  pod 'Alamofire', '~> 5.4'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
+end
+
+target 'WeatherAppTests' do
+  inherit! :complete
+  pod 'Alamofire', '~> 5.4'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
 end

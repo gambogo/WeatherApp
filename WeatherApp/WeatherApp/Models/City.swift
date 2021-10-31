@@ -14,12 +14,12 @@ class City: Codable {
     var country: String?
     var population, timezone: Int?
 
-    init(id: Int?, name: String?, coord: Coord?, country: String?, population: Int?, timezone: Int?) {
-        self.id = id
-        self.name = name
-        self.coord = coord
-        self.country = country
-        self.population = population
-        self.timezone = timezone
-    }
+//    init(id: Int?, name: String?, coord: Coord?, country: String?, population: Int?, timezone: Int?) {
+//        self.id = id
+//        self.name = name
+//        self.coord = coord
+//        self.country = country
+//        self.population = population
+//        self.timezone = timezone
+//    }
 }
