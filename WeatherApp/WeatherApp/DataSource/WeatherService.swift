@@ -22,6 +22,11 @@ class WeatherService {
         self.manager = manager
     }
     
+    func clearCache() {
+        //Remove cache - The request will be effect next time api call
+        self.cache.removeAllCachedResponses()
+    }
+    
     func searchWeather(country: (String), callBack: @escaping (Weather?) -> Void) {
         
         let queryUrlBuilder = NSMutableString(string: APIConstant.WeatherHost)

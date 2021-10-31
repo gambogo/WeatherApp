@@ -38,6 +38,7 @@ class DashboardTests: XCTestCase, WeatherApp.DashboardViewDelegate {
         //        weatherService = WeatherService(manager: manager)
         
         weatherService = WeatherApp.WeatherService()
+        weatherService?.clearCache()
         dashboardPresenter = DashboardPresenterMock(service: weatherService!)
 //        dashboardPresenter?.setViewDelegate(viewDelegate: self)
         
